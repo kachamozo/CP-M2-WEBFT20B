@@ -19,7 +19,7 @@ import * as data from "../../db.json";
 
 configure({ adapter: new Adapter() });
 
-xdescribe("<Houses />", () => {
+describe("<Houses />", () => {
   let houses, store, state, getAllHousesSpy, componentDidMountSpy;
 
   const mockStore = configureStore([thunk]);
@@ -52,7 +52,7 @@ xdescribe("<Houses />", () => {
     expect(houses.find("h3").at(0).text()).toEqual("Houses");
   });
 
-  xdescribe("connect Redux", () => {
+  describe("connect Redux", () => {
     it("Debería traer de redux nuestras houses usando mapStateToProps", () => {
       // El estado debería tener un nombre "houses".
       expect(mapStateToProps(state)).toEqual({ houses: state.houses });
@@ -83,7 +83,7 @@ xdescribe("<Houses />", () => {
     }
   });
 
-  xdescribe("React LifeCycles", () => {
+  describe("React LifeCycles", () => {
     getAllHousesSpy = jest.fn();
     let instance;
     beforeEach(async () => {

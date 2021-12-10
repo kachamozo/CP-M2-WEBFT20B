@@ -14,7 +14,7 @@ import * as actions from "../redux/actions";
 
 configure({ adapter: new Adapter() });
 
-xdescribe("<HouseDetail />", () => {
+describe("<HouseDetail />", () => {
   let houseDetail, useSelectorStub, useSelectorFn, useEffect;
   const noCharactersHouse = {
     id: 5,

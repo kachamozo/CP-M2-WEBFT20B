@@ -8,7 +8,7 @@ import Nav from "../components/Nav/Nav";
 
 configure({ adapter: new Adapter() });
 
-xdescribe("<Nav />", () => {
+describe("<Nav />", () => {
   let nav;
   // Si o si vas a tener que usar class component! No van a correr ninguno de los tests si no lo haces. <3
   beforeEach(() => {

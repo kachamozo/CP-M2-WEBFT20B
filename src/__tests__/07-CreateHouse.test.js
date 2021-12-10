@@ -13,7 +13,7 @@ import * as actions from "../redux/actions";
 
 configure({ adapter: new Adapter() });
 
-xdescribe("<CreateHouse />", () => {
+describe("<CreateHouse />", () => {
   const state = { houses: data.houses };
   const mockStore = configureStore([thunk]);
   const { CREATE_HOUSE } = actions;
@@ -24,7 +24,7 @@ xdescribe("<CreateHouse />", () => {
   // También fijate que vas a tener que usar algunos hooks. Tanto de React como de Redux!
   // Los hooks de React si o si los tenes que usar "React.useState", "React.useEffect". El test no los reconoce
   // cuando se hace destructuring de estos métodos === test no corren.
-  xdescribe("Estructura", () => {
+  describe("Estructura", () => {
     let createHouse;
     let store = mockStore(state);
     beforeEach(() => {
@@ -71,7 +71,7 @@ xdescribe("<CreateHouse />", () => {
     });
   });
 
-  xdescribe("Manejo de estados", () => {
+  describe("Manejo de estados", () => {
     let useState, useStateSpy, createHouse;
     let store = mockStore(state);
     beforeEach(() => {
@@ -93,7 +93,7 @@ xdescribe("<CreateHouse />", () => {
       });
     });
 
-    xdescribe("Name input", () => {
+    describe("Name input", () => {
       it('Debería cambiar de estado cuando cambie el valor del input "name', () => {
         createHouse.find('input[name="name"]').simulate("change", {
           target: { name: "name", value: "House Baratheon" },
@@ -106,7 +106,7 @@ xdescribe("<CreateHouse />", () => {
       });
     });
 
-    xdescribe("Region input", () => {
+    describe("Region input", () => {
       it('Debería cambiar de estado cuando cambie el valor del input "region', () => {
         createHouse.find('input[name="region"]').simulate("change", {
           target: { name: "region", value: "Stormlands" },
@@ -119,7 +119,7 @@ xdescribe("<CreateHouse />", () => {
       });
     });
 
-    xdescribe("Words input", () => {
+    describe("Words input", () => {
       it('Debería cambiar de estado cuando cambie el valor del input "words', () => {
         createHouse.find('input[name="words"]').simulate("change", {
           target: { name: "words", value: "Ours is the Fury" },
@@ -133,7 +133,7 @@ xdescribe("<CreateHouse />", () => {
     });
   });
 
-  xdescribe("Dispatch to store", () => {
+  describe("Dispatch to store", () => {
     let createHouse, useState, useStateSpy;
     let store = mockStore(state);
 

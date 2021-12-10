@@ -16,7 +16,7 @@ import * as data from "../../db.json";
 
 configure({ adapter: new Adapter() });
 
-xdescribe("<HouseCard />", () => {
+describe("<HouseCard />", () => {
   const { DELETE_HOUSE } = actions;
   let houseCard, state, store, houses;
   const mockStore = configureStore([thunk]);
@@ -46,7 +46,7 @@ xdescribe("<HouseCard />", () => {
 
   afterEach(() => jest.restoreAllMocks());
 
-  xdescribe("Estructura", () => {
+  describe("Estructura", () => {
     it('Debería renderizar un "button"', () => {
       expect(houseCard(houses[0]).find("button")).toHaveLength(1);
     });
@@ -94,7 +94,7 @@ xdescribe("<HouseCard />", () => {
     });
   });
 
-  xdescribe("connect redux", () => {
+  describe("connect redux", () => {
     if (typeof mapDispatchToProps === "function") {
       // ESTE TEST ES POR SI HACES EL MAPDISPATCHTOPROPS COMO UNA FUNCIÓN.
       it("Debería traer por props la funcion deleteHouse de Redux usando mapDispatchToProps", () => {
@@ -119,7 +119,7 @@ xdescribe("<HouseCard />", () => {
     }
   });
 
-  xdescribe("Dispatch to store", () => {
+  describe("Dispatch to store", () => {
     it('Debería hacer un dispatch al store utilizando la action "deleteHouse" al hacer click en el boton previamente creado. Debe pasarle el Id de la house', () => {
       expect(mapDispatchToProps.hasOwnProperty("deleteHouse")).toBeTruthy();
       mapDispatchToProps.deleteHouse = actions.deleteHouse;

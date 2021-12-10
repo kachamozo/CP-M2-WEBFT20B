@@ -8,7 +8,7 @@ import CharacterCard from "../components/CharacterCard/CharacterCard";
 
 configure({ adapter: new Adapter() });
 
-xdescribe("<CharacterCard />", () => {
+describe("<CharacterCard />", () => {
   let characterCard;
   let [char1, char2, char3] = data.houses[0].characters;
 

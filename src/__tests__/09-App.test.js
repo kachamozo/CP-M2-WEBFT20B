@@ -15,7 +15,7 @@ import CreateHouse from "../components/CreateHouse/CreateHouse";
 
 configure({ adapter: new Adapter() });
 
-xdescribe("<App />", () => {
+describe("<App />", () => {
   let store;
   const routes = ["/", "/otraRuta", "/houses", "/houses/:1", "/house/create"];
   const mockStore = configureStore([thunk]);
@@ -38,7 +38,7 @@ xdescribe("<App />", () => {
     );
   };
 
-  xdescribe("El componente Nav debe ser renderizado en todas las rutas", () => {
+  describe("El componente Nav debe ser renderizado en todas las rutas", () => {
     it('Debería ser renderizado en la ruta "/"', () => {
       const app = mount(componentToUse(routes[0]));
       expect(app.find(Nav)).toHaveLength(1);

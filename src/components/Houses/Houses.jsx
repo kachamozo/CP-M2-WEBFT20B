@@ -41,7 +41,7 @@ export const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    getAllHouses: (houses) => dispatch(getAllHouses(houses)),
+    getAllHouses: () => dispatch(getAllHouses()),
   };
 };
 

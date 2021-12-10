@@ -1,7 +1,7 @@
-export const GET_ALL_HOUSES = 'GET_ALL_HOUSES';
-export const CREATE_HOUSE = 'CREATE_HOUSE';
-export const GET_HOUSE = 'GET_HOUSE';
-export const DELETE_HOUSE = 'DELETE_HOUSE';
+export const GET_ALL_HOUSES = "GET_ALL_HOUSES";
+export const CREATE_HOUSE = "CREATE_HOUSE";
+export const GET_HOUSE = "GET_HOUSE";
+export const DELETE_HOUSE = "DELETE_HOUSE";
 
 // Fijarse que la sintaxis de nuestra Action creator es distinta a lo que venimos haciendo. Esto es
 // debido al uso del middleware "thunk", el cual nos permite trabajar con acciones asincrónicas.
@@ -13,20 +13,63 @@ export const DELETE_HOUSE = 'DELETE_HOUSE';
 
 // Usar ruta 'http://localhost:3000/houses' para buscar todas las houses en nuestro back.
 // Esto lo vas a poder hacer utilizando fetch.
-export const getAllHouses = () => dispatch => {};
+
+// export const getAllHouses = () => (dispatch) => {};
+
+export function getAllHouses() {
+  return function (dispatch) {
+    return fetch("http://localhost:3000/houses")
+      .then((result) => result.json())
+      .then((houses) => {
+        dispatch({ type: GET_ALL_HOUSES, payload: houses });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+}
 
 // Usar ruta 'http://localhost:3000/houses/:id' para buscar una house por el id pasado
 // como parámetro de la action creator.
 // Donde :id, el id recibido como argumento de la action creator.
 // Ojo, hacer un console.log de la respuesta desde el back. En nuestro reducer esperamos un objeto;
-export const getHouse = () => dispatch => {};
+
+// export const getHouse = () => (dispatch) => {};
+
+export function getHouse(id) {
+  return function (dispatch) {
+    return fetch(`http://localhost:3000/houses/${id}`)
+      .then((result) => result.json())
+      .then((house) => {
+        dispatch({ type: GET_HOUSE, payload: house });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+}
 
 // Inicializamos id en 3, para que nuestros próximos ID's no se pisen con los existentes.
 // La vas a usar en la funcion createHouse, descomentala cuando te haga falta;
-// let id = 3;
+
+let id = 3;
 
 // Desde el componente ejecutamos la action creator, pasandole como argumento los values que vamos a utilizar para crear la house.
-export const createHouse = undefined;
+
+// export const createHouse = undefined;
+
+export function createHouse(house) {
+  return {
+    type: CREATE_HOUSE,
+    payload: { ...house, id: ++id },
+  };
+}
 
 // Desde el componente ejecutamos la action creator, pasandole como argumento el id de la house que queremos eliminar.
-export const deleteHouse = undefined;
+
+export const deleteHouse = (id) => {
+  return {
+    type: DELETE_HOUSE,
+    payload: id,
+  };
+};
